@@ -502,8 +502,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  rgb: {fileID: 1170610373}
-  animator: {fileID: 1170610375}
+  dashPower: 10
+  dashDuration: 0.2
+  dashCooldown: 1
 --- !u!95 &1170610375
 Animator:
   serializedVersion: 7
