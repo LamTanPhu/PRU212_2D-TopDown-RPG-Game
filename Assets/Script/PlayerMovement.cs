@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rgb;
     private Animator animator;
     private Vector2 Movedirection;
-    private Vector2 lastIdleDirection = Vector2.down;
+    public Vector2 lastIdleDirection = Vector2.down;
     private bool isDashing = false;
     private float nextDashTime = 0f;
 

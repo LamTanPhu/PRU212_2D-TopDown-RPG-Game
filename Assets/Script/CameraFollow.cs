@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
-        // Try to find the player when the scene starts
+
         FindPlayer();
     }
 
