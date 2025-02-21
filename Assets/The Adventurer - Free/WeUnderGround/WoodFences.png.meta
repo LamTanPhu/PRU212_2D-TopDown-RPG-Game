@@ -111,6 +111,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -259,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WoodFences_0: -8222854880992081427
+      WoodFences_1: -791022967080509907
+      WoodFences_2: -7784799404024253415
+      WoodFences_3: 3451858056108604113
+      WoodFences_4: 3625858923727533973
+      WoodFences_5: 3022850190860849395
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,6 +147,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -559,7 +572,25 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SussyGoldSlime_0: -5902244634989695063
+      SussyGoldSlime_1: -4976226751071545424
+      SussyGoldSlime_10: -845852753061152325
+      SussyGoldSlime_11: 7994772300207800793
+      SussyGoldSlime_12: -6523792672513568970
+      SussyGoldSlime_13: 7753128498804926228
+      SussyGoldSlime_14: 2403810959501099237
+      SussyGoldSlime_15: 1285192542517209918
+      SussyGoldSlime_16: 6355456103532836925
+      SussyGoldSlime_17: 7638776412438727691
+      SussyGoldSlime_2: 7817212596582506813
+      SussyGoldSlime_3: 2681625879955843028
+      SussyGoldSlime_4: -8538683960026395553
+      SussyGoldSlime_5: -1506505203048842699
+      SussyGoldSlime_6: -4929498745426531807
+      SussyGoldSlime_7: 7253796583149140863
+      SussyGoldSlime_8: 896671330515404838
+      SussyGoldSlime_9: -8779627482427120404
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
