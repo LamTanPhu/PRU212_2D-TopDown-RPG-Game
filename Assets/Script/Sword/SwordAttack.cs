@@ -5,13 +5,7 @@ public class SwordAttack : MonoBehaviour
 {
     public Animator swordAnimator; // Assign in Inspector
     public Transform sword; // Assign the Sword GameObject (Make sure it's inactive at start)
-    private PlayerMovement playerMovement;
     private bool isAttacking = false;
-
-    void Start()
-    {
-        playerMovement = FindObjectOfType<PlayerMovement>(); // Find PlayerMovement script
-    }
 
     void Update()
     {
@@ -28,8 +22,10 @@ public class SwordAttack : MonoBehaviour
 
         // Get direction based on cursor position
         Vector2 direction = GetCursorDirection();
-        string animationName = GetSwordAnimation(direction);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        sword.rotation = Quaternion.Euler(0, 0, angle); // Set sword rotation
 
+        string animationName = GetSwordAnimation(angle);
         swordAnimator.Play(animationName);
 
         yield return new WaitForSeconds(swordAnimator.GetCurrentAnimatorStateInfo(0).length); // Wait for animation
@@ -44,11 +40,10 @@ public class SwordAttack : MonoBehaviour
         return (mousePos - transform.position).normalized;
     }
 
-
-    string GetSwordAnimation(Vector2 direction)
+    string GetSwordAnimation(float angle)
     {
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Debug.Log(angle);
+        Debug.Log("Attack Angle: " + angle);
+
         if (angle >= -22.5f && angle < 22.5f)
             return "SwingRight";
         else if (angle >= 22.5f && angle < 67.5f)
@@ -65,8 +60,7 @@ public class SwordAttack : MonoBehaviour
             return "SwingDown";
         else if (angle >= -67.5f && angle < -22.5f)
             return "SwingDownRight";
-        
+
         return "SwingDown"; // Default fallback
-        
     }
 }
