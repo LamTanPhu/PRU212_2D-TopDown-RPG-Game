@@ -10,7 +10,7 @@ public class SwordAttack : MonoBehaviour
 
     void Start()
     {
-        playerMovement = FindObjectOfType<PlayerMovement>(); // Find player movement script
+        playerMovement = FindObjectOfType<PlayerMovement>(); // Find PlayerMovement script
     }
 
     void Update()
@@ -26,21 +26,47 @@ public class SwordAttack : MonoBehaviour
         isAttacking = true;
         sword.gameObject.SetActive(true); // Show the sword
 
-        // Get the player's last movement direction
-        Vector2 direction = playerMovement.lastIdleDirection;
+        // Get direction based on cursor position
+        Vector2 direction = GetCursorDirection();
+        string animationName = GetSwordAnimation(direction);
 
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) // Horizontal swing
-        {
-            swordAnimator.Play(direction.x > 0 ? "SwingRight" : "SwingLeft");
-        }
-        else // Vertical swing
-        {
-            swordAnimator.Play(direction.y > 0 ? "SwingUp" : "SwingDown");
-        }
+        swordAnimator.Play(animationName);
 
-        yield return new WaitForSeconds(swordAnimator.GetCurrentAnimatorStateInfo(0).length); // Wait until animation finishes
+        yield return new WaitForSeconds(swordAnimator.GetCurrentAnimatorStateInfo(0).length); // Wait for animation
 
         sword.gameObject.SetActive(false); // Hide the sword
         isAttacking = false;
+    }
+
+    Vector2 GetCursorDirection()
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return (mousePos - transform.position).normalized;
+    }
+
+
+    string GetSwordAnimation(Vector2 direction)
+    {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Debug.Log(angle);
+        if (angle >= -22.5f && angle < 22.5f)
+            return "SwingRight";
+        else if (angle >= 22.5f && angle < 67.5f)
+            return "SwingUpRight";
+        else if (angle >= 67.5f && angle < 112.5f)
+            return "SwingUp";
+        else if (angle >= 112.5f && angle < 157.5f)
+            return "SwingUpLeft";
+        else if (angle >= 157.5f || angle < -157.5f)
+            return "SwingLeft";
+        else if (angle >= -157.5f && angle < -112.5f)
+            return "SwingDownLeft";
+        else if (angle >= -112.5f && angle < -67.5f)
+            return "SwingDown";
+        else if (angle >= -67.5f && angle < -22.5f)
+            return "SwingDownRight";
+        
+        return "SwingDown"; // Default fallback
+        
     }
 }
