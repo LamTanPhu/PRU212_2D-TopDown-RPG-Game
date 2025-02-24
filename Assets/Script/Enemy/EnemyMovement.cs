@@ -1,16 +1,19 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
     public float moveSpeed = 2f;
-    public float minChangeTime = 2f;
-    public float maxChangeTime = 5f;
+    public float minChangeTime = 1f;
+    public float maxChangeTime = 3f;
     public float idleChance = 0.3f;
 
     private Vector2 moveDirection;
     private Rigidbody2D rb;
     private Animator animator;
+
+    public bool isHurt = false;
+    public bool isAttacking = false;
 
     void Start()
     {
@@ -21,19 +24,28 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = moveDirection * moveSpeed;
+        if (isAttacking || isHurt) return;
+
+        rb.linearVelocity = moveDirection * moveSpeed; // Sửa lại thành velocity thay vì linearVelocity (lỗi cú pháp)
 
         if (moveDirection == Vector2.zero)
         {
-            animator.SetTrigger("Idle");  // Use trigger instead of Play()
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                animator.SetTrigger("Idle");
+            }
         }
         else
         {
-            animator.SetTrigger("Walk");
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+            {
+                animator.SetTrigger("Walk");
+            }
         }
     }
 
-    IEnumerator ChangeDirectionRoutine()
+
+    public IEnumerator ChangeDirectionRoutine()
     {
         while (true)
         {
@@ -56,12 +68,21 @@ public class EnemyMovement : MonoBehaviour
     {
         moveDirection = Vector2.zero;
         rb.linearVelocity = Vector2.zero;
-        animator.SetTrigger("Idle");
+        isAttacking = true;
+        //animator.SetTrigger("Idle");
     }
 
     public void ResumeMoving()
     {
-        StartCoroutine(ChangeDirectionRoutine()); // Resume patrol after attack
+        // Chuyển về animation phù hợp sau khi Hurt kết thúc
+        if (moveDirection == Vector2.zero)
+        {
+            animator.SetTrigger("Idle");
+        }
+        else
+        {
+            animator.SetTrigger("Walk");
+        }
+        StartCoroutine(ChangeDirectionRoutine()); // Tiếp tục tuần tra
     }
-
 }

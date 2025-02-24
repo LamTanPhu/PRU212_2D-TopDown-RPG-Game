@@ -1,12 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class EnemyAttack : MonoBehaviour
 {
     public float attackRange = 1.5f;
-    public float attackCooldown = 1f;
+    public float attackCooldown = 3f;
     public int attackDamage = 1;
-    private bool isAttacking = false;
+    private bool isPerformingAttack = false;
 
     private Transform player;
     private Animator animator;
@@ -19,37 +19,47 @@ public class EnemyAttack : MonoBehaviour
         enemyMovement = GetComponent<EnemyMovement>();
     }
 
+
+
     void Update()
     {
-        if (player != null)
+        if (player != null && !enemyMovement.isAttacking && !isPerformingAttack)
         {
             float distance = Vector2.Distance(transform.position, player.position);
-
-            if (distance <= attackRange && !isAttacking)
+            if (distance <= attackRange && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
                 StartCoroutine(PerformAttack());
             }
         }
     }
 
-    IEnumerator PerformAttack()
-    {
-        isAttacking = true;
-        enemyMovement.StopMoving();
-        animator.Play("Attack");
-
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); // Wait for attack animation to finish
-
-        if (player != null && Vector2.Distance(transform.position, player.position) <= attackRange)
+        public IEnumerator PerformAttack()
         {
-            //player.GetComponent<PlayerHealth>()?.TakeDamage(attackDamage);
-            Debug.Log("Take Damage");
+            enemyMovement.isAttacking = true;
+            StopCoroutine(enemyMovement.ChangeDirectionRoutine()); // Ngăn đổi hướng khi tấn công
+            enemyMovement.StopMoving(); 
+            animator.Play("Attack");
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+            animator.SetTrigger("Idle");
+            yield return new WaitForSeconds(attackCooldown);
+            enemyMovement.isAttacking = false;
+            enemyMovement.ResumeMoving();
         }
 
-        animator.Play("Idle"); // Manually switch back to Idle
-        yield return new WaitForSeconds(attackCooldown);
+        public void StopAttacking()
+        {
+            StopAllCoroutines();
+            enemyMovement.isAttacking = false;
+            isPerformingAttack = false;
 
-        isAttacking = false;
-        enemyMovement.ResumeMoving();
+            animator.Play("Idle"); // Đặt Idle để tránh bị kẹt
+        }
+
+    public void PlayerTakeDamage()
+    {
+        if (player != null && Vector2.Distance(transform.position, player.position) <= attackRange)
+        {
+            Debug.Log("Take Damage");
+        }
     }
 }

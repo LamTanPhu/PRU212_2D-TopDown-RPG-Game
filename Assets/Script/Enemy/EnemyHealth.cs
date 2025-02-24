@@ -6,43 +6,59 @@ public class EnemyHealth : MonoBehaviour
     private int currentHealth;
     private Animator animator;
     private EnemyMovement enemyMovement;
-    private bool isHurt = false; // Prevents multiple hits interfering with animation
+    private EnemyAttack enemyAttack;
 
     void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
-        enemyMovement = GetComponent<EnemyMovement>(); // Reference movement
+        enemyMovement = GetComponent<EnemyMovement>();
+        enemyAttack = GetComponent<EnemyAttack>();
     }
 
     public void TakeDamage(int damage)
     {
-        if (isHurt) return; // Prevent multiple hits at the same time
-
+        //if (enemyMovement.isHurt) return; // Ngăn bị đánh trùng
         currentHealth -= damage;
-        isHurt = true;  // Mark as hurt
-        animator.Play("Hurt");  // Play Hurt animation
-
+        enemyMovement.isHurt = true;
+        enemyMovement.StopMoving();
+        if (enemyMovement.isAttacking)
+        {
+            enemyAttack.StopAttacking();
+        }
+        animator.CrossFade("Hurt", 0.1f);
         if (currentHealth <= 0)
         {
             Die();
         }
         else
         {
-            Invoke(nameof(ResumeMovement), 0.2f); // Delay before resuming movement
+            // Chờ đúng thời gian của animation Hurt trước khi tiếp tục
+            float hurtAnimTime = 0.35f;
+            Invoke(nameof(ResumeMovement), hurtAnimTime);
         }
     }
 
     void ResumeMovement()
     {
-        isHurt = false; // Reset hurt state
-        animator.Play("Walk"); // Resume normal animation
+        enemyMovement.isHurt = false;
+        enemyMovement.ResumeMoving(); // Tiếp tục di chuyển
+
     }
 
     void Die()
     {
+        enemyMovement.StopMoving(); // Dừng di chuyển khi chết
         animator.Play("Die");
-        enemyMovement.enabled = false; // Stop movement
-        Destroy(gameObject, 1f); // Destroy after animation
+
+        // Chờ animation chết chạy hết rồi dừng lại ở frame cuối
+        float dieAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
+        Invoke(nameof(FinalizeDeath), dieAnimTime);
+    }
+
+    void FinalizeDeath()
+    {
+        animator.enabled = false; // Freeze animation ở frame cuối
+        Destroy(gameObject, 0f); // Xóa ngay lập tức
     }
 }
