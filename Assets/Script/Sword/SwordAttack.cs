@@ -65,8 +65,8 @@ public class SwordAttack : MonoBehaviour
             return "SwingDown";
         else if (angle >= -67.5f && angle < -22.5f)
             return "SwingDownRight";
-        
+
         return "SwingDown"; // Default fallback
-        
+
     }
 }
