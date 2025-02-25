@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     public float idleTime = 2f;
     public float walkTime = 3f;
     public float attackRange = 1.5f;
-    public float attackCooldown = 1.5f;
+    public float attackCooldown = 1f;
     public int maxHealth = 100;
     public int attackDamage = 1;
 
@@ -107,12 +107,9 @@ public class EnemyAI : MonoBehaviour
 
             if (stateInfo.normalizedTime >= 1) // Khi animation Attack hoàn thành 1 lần
             {
-                Debug.Log("Enemy hoàn thành 1 lần Attack");
-
                 // Nếu Player đã rời khỏi tầm, đặt cờ dừng Attack sau khi hoàn thành
                 if (player == null || Vector2.Distance(transform.position, player.position) > attackRange)
                 {
-                    Debug.Log("Player đã rời tầm - Enemy sẽ dừng Attack sau lần này!");
                     shouldStopAttack = true;
                     break;
                 }
