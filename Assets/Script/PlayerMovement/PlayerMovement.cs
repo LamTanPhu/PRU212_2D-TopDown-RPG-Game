@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rgb;
     private Animator animator;
     private Vector2 moveDirection;
-    private Vector2 lastIdleDirection = Vector2.down;
+    public Vector2 lastIdleDirection = Vector2.down;
     private bool isDashing = false;
     private float nextDashTime = 0f;
 
@@ -77,15 +77,15 @@ public class PlayerMovement : MonoBehaviour
     {
         isDashing = true;
         animator.SetBool("isDashing", true); // Activate dash animation
-        nextDashTime = Time.time + dashCooldown; 
-        Vector2 dashDirection = lastIdleDirection.normalized; 
+        nextDashTime = Time.time + dashCooldown;
+        Vector2 dashDirection = lastIdleDirection.normalized;
         float startTime = Time.time;
         while (Time.time < startTime + dashDuration)
         {
             rgb.linearVelocity = dashDirection * dashPower;
             yield return null;
         }
-        float decelerationTime = 0.1f; 
+        float decelerationTime = 0.1f;
         float elapsed = 0f;
         Vector2 startVelocity = rgb.linearVelocity;
         while (elapsed < decelerationTime)
