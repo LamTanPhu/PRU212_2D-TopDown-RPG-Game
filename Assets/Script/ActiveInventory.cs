@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-<<<<<<< HEAD
-=======
 
->>>>>>> aba73cead9363b8eba7bee1f736c2a61c8a03ed0
 using UnityEngine;
 
 public class ActiveInventory : MonoBehaviour

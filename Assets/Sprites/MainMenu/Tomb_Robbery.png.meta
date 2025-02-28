@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tomb_Robbery_0: 387208069538770291
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
