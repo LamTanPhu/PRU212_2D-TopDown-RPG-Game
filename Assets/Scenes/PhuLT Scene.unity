@@ -994,6 +994,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+  movement: {x: 0, y: 0}
+  rb: {fileID: 0}
+  myAnimator: {fileID: 0}
+  mySpriteRender: {fileID: 0}
 --- !u!50 &1120622246
 Rigidbody2D:
   serializedVersion: 5
@@ -1740,6 +1744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1532018835}
   - component: {fileID: 1532018836}
+  - component: {fileID: 1532018837}
   m_Layer: 5
   m_Name: Active Inventory
   m_TagString: Untagged
@@ -1796,6 +1801,18 @@ MonoBehaviour:
   m_Spacing: {x: 30, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1532018837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532018834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76251145d80cf804d8bbc34ad14c7879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1679730432
 GameObject:
   m_ObjectHideFlags: 0
