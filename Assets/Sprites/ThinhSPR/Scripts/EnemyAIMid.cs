@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAIMid : MonoBehaviour
 {
     private enum State
     {
@@ -10,11 +10,11 @@ public class EnemyAI : MonoBehaviour
     }
 
     private State state;
-    private EnemyPathfinding enemyPathfinding;
+    private EnemyPathfindingMid enemyPathfinding;
 
     private void Awake()
     {
-        enemyPathfinding = GetComponent<EnemyPathfinding>();
+        enemyPathfinding = GetComponent<EnemyPathfindingMid>();
         state = State.Roaming;
     }
 
