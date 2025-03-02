@@ -7,6 +7,7 @@ public class ItemSlot : MonoBehaviour
 {
     public Image itemIcon; // Ảnh hiển thị vật phẩm
     public TextMeshProUGUI itemName; // Tên vật phẩm
+    public TextMeshProUGUI itemQuantity; // Tên vật phẩm
     private Item item; // Dữ liệu vật phẩm
 
 
@@ -16,6 +17,7 @@ public class ItemSlot : MonoBehaviour
         itemIcon.sprite = item.icon; // Gán hình ảnh
         itemIcon.enabled = true;
         itemName.text = item.itemName; // Gán tên vật phẩm
+        itemQuantity.text = item.quantity.ToString();
     }
 
     public void ClearSlot()

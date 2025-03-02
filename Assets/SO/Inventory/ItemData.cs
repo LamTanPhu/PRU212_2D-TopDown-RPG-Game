@@ -8,7 +8,16 @@ public class ItemData : ScriptableObject
 
     public void AddItem(Item newItem)
     {
-        items.Add(newItem);
+        Item existingItem = items.Find(item => item.itemName == newItem.itemName);
+
+        if (existingItem != null)
+        {
+            existingItem.quantity += newItem.quantity; 
+        }
+        else
+        {
+            items.Add(newItem); 
+        }
     }
 
     public void RemoveItem(Item item)

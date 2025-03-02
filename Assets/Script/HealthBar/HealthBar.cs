@@ -9,11 +9,24 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerhealthBar == null)
+        {
+            Debug.LogError("HealthBar: PlayerHealth reference is missing! Assign it in the Inspector.");
+            return;
+        }
         TotalhealthBar.fillAmount = PlayerhealthBar.CurrentHealth / 10;
+        UpdateHealthBar();
     }
+
     public void UpdateHealthBar()
     {
+        if (PlayerhealthBar == null)
+        {
+            Debug.LogError("HealthBar: PlayerHealth reference is missing! Assign it in the Inspector.");
+            return;
+        }
         CurrentHealthBar.fillAmount = PlayerhealthBar.CurrentHealth / 10;
+        Debug.Log($"Updating Health Bar: {PlayerhealthBar.CurrentHealth}");
     }
 
 }

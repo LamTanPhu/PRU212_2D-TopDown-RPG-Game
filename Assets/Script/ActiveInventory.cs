@@ -8,6 +8,7 @@ public class ActiveInventory : MonoBehaviour
     private int activeSlotIndexNum = 0;
 
     private PlayerControls playerControls;
+    public WeaponSwitch weaponSwitcher;
 
     private void Awake()
     {
@@ -16,7 +17,12 @@ public class ActiveInventory : MonoBehaviour
 
     private void Start()
     {
-        playerControls.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
+        playerControls.Inventory.Keyboard.performed += ctx =>
+        {
+            int selectedIndex = (int)ctx.ReadValue<float>() - 1;
+            ToggleActiveSlot(selectedIndex);
+            weaponSwitcher.ChangeWeapon(selectedIndex);
+        };
     }
 
     private void OnEnable()
@@ -24,12 +30,7 @@ public class ActiveInventory : MonoBehaviour
         playerControls.Enable();
     }
 
-    private void ToggleActiveSlot(int numValue)
-    {
-        ToggleActiveHighlight(numValue - 1);
-    }
-
-    private void ToggleActiveHighlight(int indexNum)
+    private void ToggleActiveSlot(int indexNum)
     {
         activeSlotIndexNum = indexNum;
 
