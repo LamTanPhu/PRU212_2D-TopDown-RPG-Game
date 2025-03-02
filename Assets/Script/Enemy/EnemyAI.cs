@@ -3,6 +3,11 @@ using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
+    public PlayerHealth playerHealth;
+    public Collider2D attackZone;
+    public Collider2D detectionZone; // Khu vực phát hiện Player
+    private bool playerInRange = false;
+    private bool playerDetected = false;
     public enum EnemyState { Idle, Walk, Attack, Hurt, Dead }
     private EnemyState currentState = EnemyState.Idle;
 
@@ -27,6 +32,8 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"));
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Player"));
         player = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -193,5 +200,34 @@ public class EnemyAI : MonoBehaviour
             StartCoroutine(HandleHurt());
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+            Debug.Log("👀 Player đã vào tầm tấn công!");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+            Debug.Log("🏃 Player đã rời khỏi tầm tấn công!");
+        }
+    }
+
+    // Hàm này được gọi từ Animation Event khi đòn tấn công xảy ra
+    public void DealDamageToPlayer()
+    {
+        if (playerInRange && playerHealth != null)
+        {
+            playerHealth.TakeDamage(attackDamage);
+            Debug.Log("💥 Enemy đã gây sát thương!");
+        }
+    }
+
+
 
 }

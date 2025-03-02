@@ -7,5 +7,6 @@ public class Item
 {
     public string itemName;
     public Sprite icon;
+    public int quantity;
     public string description; // Mô tả vật phẩm
 }

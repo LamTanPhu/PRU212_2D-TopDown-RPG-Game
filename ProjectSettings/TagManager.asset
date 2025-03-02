@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Weapon
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Decor-1
   - Hole
   - Player
-  - 
-  - 
+  - Enemy
+  - Chest
   - 
   - 
   - 

@@ -13,12 +13,27 @@ MonoBehaviour:
   m_Name: ChestData
   m_EditorClassIdentifier: 
   items:
-  - itemName: 
-    icon: {fileID: 0}
+  - itemName: Red Gemstone
+    icon: {fileID: 481351952589351511, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 0
     description: 
-  - itemName: 
-    icon: {fileID: 0}
+  - itemName: Blue Gemstone
+    icon: {fileID: 83807112660430937, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 1
     description: 
-  - itemName: 
-    icon: {fileID: 0}
+  - itemName: Blue Necklace
+    icon: {fileID: -8320003261947851580, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 1
+    description: 
+  - itemName: Red Necklace
+    icon: {fileID: -7903086211090504526, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 1
+    description: 
+  - itemName: Red Ring
+    icon: {fileID: -1748086016585653915, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 1
+    description: 
+  - itemName: Yellow Ring
+    icon: {fileID: 2759240772225771104, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 1
     description: 

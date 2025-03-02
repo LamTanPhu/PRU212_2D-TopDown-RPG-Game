@@ -13,48 +13,27 @@ MonoBehaviour:
   m_Name: ItemData
   m_EditorClassIdentifier: 
   items:
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
-  - itemName: Sword
-    icon: {fileID: -4520530109522101592, guid: 5e0cfc088dd263d4eb3208d0f954c0b4, type: 3}
-    description: Sword
+  - itemName: Red Gemstone
+    icon: {fileID: 481351952589351511, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 1
+    description: 
+  - itemName: Blue Gemstone
+    icon: {fileID: 83807112660430937, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 5
+    description: 
+  - itemName: Blue Necklace
+    icon: {fileID: -8320003261947851580, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 15
+    description: 
+  - itemName: Red Necklace
+    icon: {fileID: -7903086211090504526, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 14
+    description: 
+  - itemName: Red Ring
+    icon: {fileID: -1748086016585653915, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 8
+    description: 
+  - itemName: Yellow Ring
+    icon: {fileID: 2759240772225771104, guid: de99466692adb6841982e9bcf731699f, type: 3}
+    quantity: 11
+    description: 
