@@ -5,9 +5,7 @@ public class EnemyAI : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public Collider2D attackZone;
-    public Collider2D detectionZone; // Khu vực phát hiện Player
     private bool playerInRange = false;
-    private bool playerDetected = false;
     public enum EnemyState { Idle, Walk, Attack, Hurt, Dead }
     private EnemyState currentState = EnemyState.Idle;
 
