@@ -324,6 +324,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 743e01bcddd586343b89a481e0180397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 10
+  dashPower: 5
+  dashDuration: 0.2
+  dashCooldown: 0.5
+  crosshair: {fileID: 0}
+  lastIdleDirection: {x: 0, y: -1}
 --- !u!61 &389562944
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -382,6 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7e593e6509fa54eaf2b90b95fd8c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordAnimator: {fileID: 0}
+  sword: {fileID: 0}
 --- !u!1 &535323975
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,16 +530,6 @@ Tilemap:
       m_TileIndex: 11
       m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 10, y: -5, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 12
-      m_TileSpriteIndex: 12
-      m_TileMatrixIndex: 2
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -1032,7 +1030,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 0db582a300906204a9c620614f8f027c, type: 2}
-  - m_RefCount: 2
+  - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: b984552e9890b064e9d7058da6aac40b, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -1059,7 +1057,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -4170555087457116640, guid: 1aed74245bf6f974daa5618ef344eca1, type: 3}
-  - m_RefCount: 2
+  - m_RefCount: 1
     m_Data: {fileID: -1586751073771575769, guid: 1aed74245bf6f974daa5618ef344eca1, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 52
@@ -1098,26 +1096,26 @@ Tilemap:
       e31: 9.9e-43
       e32: 9.92e-43
       e33: 9.91e-43
-  - m_RefCount: 1
+  - m_RefCount: 0
     m_Data:
-      e00: 0
-      e01: 1
-      e02: 0
-      e03: 0
-      e10: -1
+      e00: 4.34723e-13
+      e01: 0
+      e02: 1e-45
+      e03: 5.679808e-29
+      e10: 2.33e-43
       e11: 0
       e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
+      e13: 6.21e-43
+      e20: 2.2506822e+27
+      e21: 5.679808e-29
+      e22: -1.1091065e-19
+      e23: -0.0000000016288668
+      e30: 4.5911e-41
+      e31: 6.21e-43
+      e32: 6.24e-43
+      e33: 6.21e-43
   m_TileColorArray:
-  - m_RefCount: 53
+  - m_RefCount: 52
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -4718,6 +4716,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7e593e6509fa54eaf2b90b95fd8c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordAnimator: {fileID: 0}
+  sword: {fileID: 0}
 --- !u!95 &1444916142
 Animator:
   serializedVersion: 7
