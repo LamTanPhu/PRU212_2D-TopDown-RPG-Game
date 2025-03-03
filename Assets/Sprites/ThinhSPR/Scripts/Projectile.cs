@@ -7,10 +7,12 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float projectileRange = 10f;
 
     private Vector3 startPosition;
+    private PlayerHealth playerHealth;
 
     private void Start()
     {
         startPosition = transform.position;
+        playerHealth = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerHealth>();
     }
 
     private void Update()
@@ -21,17 +23,13 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // Make sure Player has "Player" tag
+        if (other.CompareTag("Player"))
         {
             Debug.Log("Projectile hit the player!");
 
             PlayerHealth player = other.GetComponent<PlayerHealth>();
-            if (player && isEnemyProjectile)
-            {
-                player.TakeDamage(1);
-            }
-
-            Destroy(gameObject); // Destroy projectile on hit
+            player.TakeDamage(1);
+            Destroy(gameObject);
         }
     }
 

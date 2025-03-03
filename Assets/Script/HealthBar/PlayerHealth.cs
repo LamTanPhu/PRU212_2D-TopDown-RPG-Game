@@ -4,26 +4,28 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float StartingHealth;
     public float CurrentHealth { get; private set; }
-    private bool isDead = false;
+    public bool IsDead { get; private set; } = false;
 
     private Animator animator;
     private PlayerMovement playerMovement;
+    private Rigidbody2D rgb;
 
     private void Awake()
     {
         CurrentHealth = StartingHealth;
         animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
+        rgb = GetComponent<Rigidbody2D>();
     }
 
-    public void TakeDamage(float _damage)
+    public void TakeDamage(float damage)
     {
-        if (isDead) return;
-        CurrentHealth = Mathf.Clamp(CurrentHealth - _damage, 0, StartingHealth);
-        FindObjectOfType<HealthBar>()?.UpdateHealthBar(); // Update health bar
+        if (IsDead) return;
 
-        Debug.Log($"Health Changed: {CurrentHealth}");
-        if (CurrentHealth <= 0)
+        CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, StartingHealth);
+        FindObjectOfType<HealthBar>()?.UpdateHealthBar();
+
+        if (CurrentHealth <= 0 && !IsDead)
         {
             Die();
         }
@@ -31,24 +33,37 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        if (isDead) return;
-        isDead = true;
+        if (IsDead) return;
+        IsDead = true;
 
+        // Stop movement and dashing
+        playerMovement.enabled = false;
+        playerMovement.isDashing = false;
+
+        // Stop all movement
+        rgb.linearVelocity = Vector2.zero;
+        StopAllCoroutines(); // Ensure no movement continues
+
+        // Stop movement animations
+        animator.SetBool("isDashing", false);
+        animator.SetFloat("AnimMagnitude", 0);
         animator.SetFloat("AnimMoveX", playerMovement.lastIdleDirection.x);
         animator.SetFloat("AnimMoveY", playerMovement.lastIdleDirection.y);
+
+        // Play death animation
         animator.SetTrigger("Die");
-
-        playerMovement.enabled = false;
-        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-
-        foreach (Transform child in transform)
-        {
-            if (child.CompareTag("Weapon"))
-            {
-                child.gameObject.SetActive(false);
-            }
-        }
     }
 
+    private void Update()
+    {
+        if (CurrentHealth <= 0 && !IsDead)
+        {
+            Die();
+        }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TakeDamage(1);
+        }
+    }
 }

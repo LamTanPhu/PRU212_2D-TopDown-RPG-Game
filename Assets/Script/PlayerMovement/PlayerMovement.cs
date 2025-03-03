@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private Vector2 moveDirection;
     public Vector2 lastIdleDirection = Vector2.down;
-    private bool isDashing = false;
+    public bool isDashing = false;
     private float nextDashTime = 0f;
     private bool isBeingPushed = false; // Flag for external forces
 
