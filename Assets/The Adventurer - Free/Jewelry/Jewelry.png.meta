@@ -240,6 +240,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1334,7 +1347,56 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Jewelry_0: 77457145437977130
+      Jewelry_1: 83807112660430937
+      Jewelry_10: 6055100915144632438
+      Jewelry_11: -1748086016585653915
+      Jewelry_12: -5878929121107648650
+      Jewelry_13: 491514507171955764
+      Jewelry_14: -9216438047155839802
+      Jewelry_15: -4133607710369699278
+      Jewelry_16: 2759240772225771104
+      Jewelry_17: 8220699496762449747
+      Jewelry_18: 373971512617516156
+      Jewelry_19: 307134455398837645
+      Jewelry_2: 481351952589351511
+      Jewelry_20: -7918039250051045380
+      Jewelry_21: -2328026201985941702
+      Jewelry_22: -6707303784855453071
+      Jewelry_23: 8135083555806356384
+      Jewelry_24: 3315761919637562673
+      Jewelry_25: -2453487135983680907
+      Jewelry_26: 122959557482496793
+      Jewelry_27: -1914782613926905019
+      Jewelry_28: 559412650801050366
+      Jewelry_29: -2670601196869058131
+      Jewelry_3: -1488407679497184394
+      Jewelry_30: -2325945267589908228
+      Jewelry_31: -4596127916189665146
+      Jewelry_32: -6177745485326996160
+      Jewelry_33: 1548931458418112400
+      Jewelry_34: 3046220160446028364
+      Jewelry_35: 2234859532833523212
+      Jewelry_36: -2869974455009624339
+      Jewelry_37: -6599528772864159934
+      Jewelry_38: -8320003261947851580
+      Jewelry_39: 7218396863803748869
+      Jewelry_4: 1919457100496327687
+      Jewelry_40: -7903086211090504526
+      Jewelry_41: 5421768180651607617
+      Jewelry_42: -7367281172769672665
+      Jewelry_43: -8624994695824704441
+      Jewelry_44: -2546754580808354893
+      Jewelry_45: 2625202584702153018
+      Jewelry_46: 9164766490763004821
+      Jewelry_47: 4605636144534820142
+      Jewelry_48: -7693324984822768083
+      Jewelry_5: -788311544848416245
+      Jewelry_6: -5840707045121968587
+      Jewelry_7: -5982470276915118385
+      Jewelry_8: -5168703726192340309
+      Jewelry_9: -1516856491372522928
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

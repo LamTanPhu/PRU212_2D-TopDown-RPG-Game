@@ -5,11 +5,11 @@ using UnityEngine.EventSystems;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public float dashPower = 5f; // Dash speed
-    public float dashDuration = 0.2f; // Shorter dash for a snappier feel
-    public float dashCooldown = 0.5f; // Time before dashing again
+    public float dashPower = 5f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 0.5f;
 
-    public GameObject crosshair; // Assign in Inspector
+    public GameObject crosshair;
 
     private Rigidbody2D rgb;
     private Animator animator;
@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 lastIdleDirection = Vector2.down;
     private bool isDashing = false;
     private float nextDashTime = 0f;
+    private bool isBeingPushed = false; // Flag for external forces
 
     void Start()
     {
@@ -31,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         Animate();
         UpdateCrosshairPosition();
 
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextDashTime && moveDirection.magnitude > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextDashTime && moveDirection.magnitude > 0 && !isBeingPushed)
         {
             StartCoroutine(Dash());
         }
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isDashing)
+        if (!isDashing && !isBeingPushed)
         {
             Move();
         }
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = new Vector2(moveX, moveY).normalized;
 
-        if (moveDirection.magnitude > 0.1f)
+        if (moveDirection.magnitude > 0.1f && !isBeingPushed)
         {
             lastIdleDirection = moveDirection;
         }
@@ -61,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 lookDirection = (mousePos - transform.position).normalized;
 
-            if (lookDirection.magnitude > 0.1f)
+            if (lookDirection.magnitude > 0.1f && !isBeingPushed)
             {
                 lastIdleDirection = lookDirection;
             }
@@ -70,13 +71,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        rgb.linearVelocity = moveDirection * moveSpeed;
+        if (!isBeingPushed)
+        {
+            rgb.linearVelocity = moveDirection * moveSpeed;
+        }
     }
 
     IEnumerator Dash()
     {
         isDashing = true;
-        animator.SetBool("isDashing", true); // Activate dash animation
+        animator.SetBool("isDashing", true);
         nextDashTime = Time.time + dashCooldown;
         Vector2 dashDirection = lastIdleDirection.normalized;
         float startTime = Time.time;
@@ -107,7 +111,6 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("AnimMagnitude", moveDirection.magnitude);
     }
 
-
     void UpdateCrosshairPosition()
     {
         if (crosshair != null)
@@ -115,6 +118,16 @@ public class PlayerMovement : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f;
             crosshair.transform.position = mousePosition;
+        }
+    }
+
+    // Method to handle external push (called by EnemyGravityBullet)
+    public void SetBeingPushed(bool value)
+    {
+        isBeingPushed = value;
+        if (isBeingPushed)
+        {
+            rgb.linearVelocity = Vector2.zero; // Reset velocity during push
         }
     }
 }
