@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 27588067}
   - component: {fileID: 27588069}
   - component: {fileID: 27588068}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4790,7 +4790,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 133388120}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4856,7 +4856,7 @@ GameObject:
   - component: {fileID: 1068755937}
   - component: {fileID: 1068755936}
   - component: {fileID: 1068755935}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bow
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -7349,7 +7349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1288364900}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7437,7 +7437,7 @@ GameObject:
   - component: {fileID: 1360945148}
   - component: {fileID: 1360945147}
   - component: {fileID: 1360945146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7648,7 +7648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1426116374}
   - component: {fileID: 1426116375}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8019,7 +8019,8 @@ GameObject:
   - component: {fileID: 1842035986}
   - component: {fileID: 1842035985}
   - component: {fileID: 1842035987}
-  m_Layer: 0
+  - component: {fileID: 1842035988}
+  m_Layer: 6
   m_Name: Hole
   m_TagString: Hole
   m_Icon: {fileID: 0}
@@ -8898,13 +8899,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842035983}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8374ba1e120b320468d947d4d76650cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Map-1.3.3
-  spawnPointName: 
+  sceneToLoad: Map-1.1
+  spawnPointName: SpawnPoint 1.1
+--- !u!114 &1842035988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842035983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39edc40756dc2d940b27465a822ccedf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSceneName: Map-1.1
+  transitionDelay: 0.5
+  spawnPointTag: SpawnPoint 1.1
 --- !u!1001 &1993983024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8931,7 +8947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480907496036305411, guid: a004ec6fd62ccf049bb6c4e97a47c4d4, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2480907496036305411, guid: a004ec6fd62ccf049bb6c4e97a47c4d4, type: 3}
       propertyPath: m_TagString
@@ -9171,6 +9187,8 @@ GameObject:
   - component: {fileID: 2005276698}
   - component: {fileID: 2005276697}
   - component: {fileID: 2005276696}
+  - component: {fileID: 2005276699}
+  - component: {fileID: 2005276700}
   m_Layer: 0
   m_Name: Agis_0
   m_TagString: Untagged
@@ -9200,7 +9218,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005276694}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78928e3974c315d45b190f1654ae0550, type: 3}
   m_Name: 
@@ -9291,6 +9309,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2005276699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005276694}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f024e98bcb26b4eb3b423ab5ee64ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 832474767967325930, guid: 127121f0c728ff54b93763e8a13b6ad5, type: 3}
+  bulletSpeed: 5
+  fireRate: 2
+  bulletCount: 6
+  spreadAngle: 30
+--- !u!114 &2005276700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005276694}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f024e98bcb26b4eb3b423ab5ee64ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 3268505124277920932, guid: 54b86b863a3136a4abd65df2629402bc, type: 3}
+  bulletSpeed: 5
+  fireRate: 3
+  bulletCount: 20
+  spreadAngle: 60
 --- !u!1 &2114894050
 GameObject:
   m_ObjectHideFlags: 0
