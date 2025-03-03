@@ -14,12 +14,18 @@ public class Spike : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        playerInRange = true;
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        playerInRange = false;
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
     }
 
     public void DealDamageToPlayer()
