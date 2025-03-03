@@ -5,9 +5,7 @@ public class EnemyAI : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public Collider2D attackZone;
-    public Collider2D detectionZone; // Khu vực phát hiện Player
     private bool playerInRange = false;
-    private bool playerDetected = false;
     public enum EnemyState { Idle, Walk, Attack, Hurt, Dead }
     private EnemyState currentState = EnemyState.Idle;
 
@@ -30,6 +28,9 @@ public class EnemyAI : MonoBehaviour
     private bool isDead = false; // Kiểm soát Enemy có chết chưa
     private float stateTimer = 0f;
 
+    public float chaseSpeed = 3f; // Tốc độ khi đuổi theo Player
+    public float chaseRange = 5f; // Khoảng cách để bắt đầu đuổi theo Player
+
     void Start()
     {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"));
@@ -42,22 +43,29 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return; // Nếu Enemy đã chết, không làm gì cả
+        if (isDead) return;
 
-        switch (currentState)
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        if (distanceToPlayer <= attackRange && canAttack && !isAttacking && !isHurt)
         {
-            case EnemyState.Idle:
-                UpdateIdle();
-                break;
-            case EnemyState.Walk:
-                UpdateWalk();
-                break;
-            case EnemyState.Attack:
-                if (!isAttacking && (player == null || Vector2.Distance(transform.position, player.position) > attackRange))
-                {
-                    currentState = EnemyState.Idle;
-                }
-                break;
+            StartCoroutine(HandleAttack());
+        }
+        else if (distanceToPlayer <= chaseRange && !isAttacking && !isHurt)
+        {
+            MoveTowardsPlayer(); // 🟢 Đuổi theo Player khi trong phạm vi
+        }
+        else
+        {
+            switch (currentState)
+            {
+                case EnemyState.Idle:
+                    UpdateIdle();
+                    break;
+                case EnemyState.Walk:
+                    UpdateWalk();
+                    break;
+            }
         }
 
         // Nếu Player vào tầm, Enemy Attack ngay lập tức
@@ -65,6 +73,15 @@ public class EnemyAI : MonoBehaviour
         {
             StartCoroutine(HandleAttack());
         }
+    }
+
+    void MoveTowardsPlayer()
+    {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+            animator.Play("Walk"); // ✅ Giữ nguyên hệ thống Animation
+
+        Vector2 direction = (player.position - transform.position).normalized;
+        rb.linearVelocity = direction * chaseSpeed;
     }
 
     void UpdateIdle()
@@ -179,7 +196,6 @@ public class EnemyAI : MonoBehaviour
         if (isDead || currentState == EnemyState.Hurt) return;
 
         currentHealth -= damage;
-        Debug.Log("Enemy bị đánh! Máu còn: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -192,7 +208,6 @@ public class EnemyAI : MonoBehaviour
 
             if (currentState == EnemyState.Attack)
             {
-                Debug.Log("Enemy bị đánh khi đang Attack - Dừng Attack ngay lập tức!");
                 isAttacking = false;
                 canAttack = false;
             }
@@ -205,7 +220,6 @@ public class EnemyAI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            Debug.Log("👀 Player đã vào tầm tấn công!");
         }
     }
 
@@ -214,7 +228,6 @@ public class EnemyAI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            Debug.Log("🏃 Player đã rời khỏi tầm tấn công!");
         }
     }
 

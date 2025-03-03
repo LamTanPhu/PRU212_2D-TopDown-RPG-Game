@@ -48,8 +48,6 @@ public class Chest : MonoBehaviour
             inventoryData.AddItem(item);
         }
 
-        Debug.Log("📦 Rương đã mở! Vật phẩm đã được thêm vào Inventory.");
-
         GetComponent<Collider2D>().enabled = false; // Vô hiệu hóa Collider
         this.enabled = false; // Tắt Script sau khi mở rương
     }
