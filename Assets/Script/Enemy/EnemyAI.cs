@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
     public float moveSpeed = 2f;
     public float idleTime = 2f;
     public float walkTime = 3f;
-    public float attackRange = 1.5f;
+    public float attackRange = 1f;
     public float attackCooldown = 1f;
     public int maxHealth = 100;
     public int attackDamage = 1;
