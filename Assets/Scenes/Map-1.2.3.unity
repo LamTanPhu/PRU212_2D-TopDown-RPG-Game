@@ -7737,6 +7737,7 @@ GameObject:
   - component: {fileID: 1771548474}
   - component: {fileID: 1771548473}
   - component: {fileID: 1771548476}
+  - component: {fileID: 1771548477}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7863,6 +7864,20 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1771548477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771548472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 803d03dd1294f7140be4f9f140c1def9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1812399141}
+  smoothSpeed: 10
 --- !u!1 &1775828871
 GameObject:
   m_ObjectHideFlags: 0
@@ -9213,7 +9228,6 @@ MonoBehaviour:
   pushForce: 300
   gravityBulletPrefab: {fileID: 2519014440718160155, guid: b7cd0907e9f0bc9418a210296eae9ae3, type: 3}
   shootImmediately: 1
-  holeDetectionRadius: 0.5
 --- !u!95 &2005276697
 Animator:
   serializedVersion: 7
