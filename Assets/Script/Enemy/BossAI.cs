@@ -5,7 +5,7 @@ public class BossAI : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public Collider2D attackZone;
-    private bool playerInRange = false;
+    public bool playerInRange = false;
     public enum EnemyState { Idle, Walk, Attack, Hurt, Dead }
     private EnemyState currentState = EnemyState.Idle;
 
