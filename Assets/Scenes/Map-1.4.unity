@@ -3590,6 +3590,9 @@ GameObject:
   - component: {fileID: 101575279}
   - component: {fileID: 101575281}
   - component: {fileID: 101575280}
+  - component: {fileID: 101575284}
+  - component: {fileID: 101575283}
+  - component: {fileID: 101575282}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -5480,6 +5483,116 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!66 &101575282
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101575278}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths: []
+  m_CompositePaths:
+    m_Paths: []
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 101575278}
+--- !u!50 &101575283
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101575278}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!19719996 &101575284
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101575278}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &107599606
 GameObject:
   m_ObjectHideFlags: 0
@@ -9761,6 +9874,7 @@ GameObject:
   - component: {fileID: 972763680}
   - component: {fileID: 972763679}
   - component: {fileID: 972763682}
+  - component: {fileID: 972763683}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9886,6 +10000,20 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &972763683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972763678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 803d03dd1294f7140be4f9f140c1def9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2069548439}
+  smoothSpeed: 10
 --- !u!1 &1001898696
 GameObject:
   m_ObjectHideFlags: 0
@@ -11224,7 +11352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8374ba1e120b320468d947d4d76650cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Map-1.4
+  sceneToLoad: EndRoom
 --- !u!61 &1405194951
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13213,6 +13341,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c51955bfd3ce0749acd806aee5b88cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2069548439 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1372230071856932038, guid: a004ec6fd62ccf049bb6c4e97a47c4d4, type: 3}
+  m_PrefabInstance: {fileID: 2069548436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2117870893
 PrefabInstance:
   m_ObjectHideFlags: 0
