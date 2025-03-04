@@ -70,9 +70,9 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TakeDamage(1);
-        }
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    TakeDamage(1);
+        //}
     }
 }
