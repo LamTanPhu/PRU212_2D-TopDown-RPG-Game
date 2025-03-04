@@ -13387,6 +13387,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.72
       objectReference: {fileID: 0}
+    - target: {fileID: 5507854807815692955, guid: a004ec6fd62ccf049bb6c4e97a47c4d4, type: 3}
+      propertyPath: dashPower
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6263399924416785963, guid: a004ec6fd62ccf049bb6c4e97a47c4d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33.64
