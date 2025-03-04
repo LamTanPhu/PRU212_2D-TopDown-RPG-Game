@@ -143,7 +143,7 @@ public class BossAI : MonoBehaviour
         }
 
         // Đợi Attack kết thúc hoàn toàn trước khi dừng
-        yield return new WaitForSeconds(0.17f);
+        yield return new WaitForSeconds(0.1f);
 
         canAttack = true;
         isAttacking = false;
@@ -152,7 +152,6 @@ public class BossAI : MonoBehaviour
         {
             currentState = EnemyState.Idle;
         }
-        yield return new WaitForSeconds(attackCooldown);
 
     }
 

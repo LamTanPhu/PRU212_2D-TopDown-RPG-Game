@@ -9,7 +9,6 @@ public class SwordAttack : MonoBehaviour
         if (collision.CompareTag("Enemy")) // Nếu va chạm với quái
         {
             EnemyAI enemy = collision.GetComponent<EnemyAI>();
-            BossAI boss = collision.GetComponent<BossAI>();
             if (enemy != null)
             {
                 enemy.EnemyTakeDamage(attackDamage);
