@@ -9470,9 +9470,9 @@ GameObject:
   - component: {fileID: 2005276695}
   - component: {fileID: 2005276698}
   - component: {fileID: 2005276697}
-  - component: {fileID: 2005276696}
-  - component: {fileID: 2005276699}
+  - component: {fileID: 2005276706}
   - component: {fileID: 2005276700}
+  - component: {fileID: 2005276705}
   - component: {fileID: 2005276702}
   - component: {fileID: 2005276703}
   - component: {fileID: 2005276704}
@@ -9499,26 +9499,6 @@ Transform:
   - {fileID: 301933708}
   m_Father: {fileID: 746257965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2005276696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005276694}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78928e3974c315d45b190f1654ae0550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthThreshold: 50
-  currentHealth: 100
-  bulletSpeed: 10
-  bulletStopDistance: 1
-  detectionRadius: 20
-  pushForce: 300
-  gravityBulletPrefab: {fileID: 2519014440718160155, guid: b7cd0907e9f0bc9418a210296eae9ae3, type: 3}
-  shootImmediately: 1
 --- !u!95 &2005276697
 Animator:
   serializedVersion: 7
@@ -9596,23 +9576,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2005276699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005276694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f024e98bcb26b4eb3b423ab5ee64ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 832474767967325930, guid: 127121f0c728ff54b93763e8a13b6ad5, type: 3}
-  bulletSpeed: 2
-  fireRate: 4
-  bulletCount: 6
-  spreadAngle: 40
 --- !u!114 &2005276700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9625,7 +9588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f024e98bcb26b4eb3b423ab5ee64ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 832474767967325930, guid: 127121f0c728ff54b93763e8a13b6ad5, type: 3}
+  bulletPrefab: {fileID: 5101140628576745954, guid: ef32217e24cec76439c77f7e887d3c3f, type: 3}
   bulletSpeed: 5
   fireRate: 6
   bulletCount: 10
@@ -9726,6 +9689,40 @@ MonoBehaviour:
   attackDamage: 1
   chaseSpeed: 3
   chaseRange: 5
+--- !u!114 &2005276705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005276694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5642e57693c3847b1edd9a58cb9e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 5101140628576745954, guid: 9a0ad595927830d4cb35a764b9d43fb8, type: 3}
+  bulletSpeed: 4
+  fireRate: 2
+  homingDuration: 1
+  maxTurnSpeed: 180
+--- !u!114 &2005276706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005276694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f024e98bcb26b4eb3b423ab5ee64ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 5101140628576745954, guid: ef32217e24cec76439c77f7e887d3c3f, type: 3}
+  bulletSpeed: 4
+  fireRate: 4
+  bulletCount: 9
+  spreadAngle: 60
 --- !u!1 &2055439500
 GameObject:
   m_ObjectHideFlags: 0
