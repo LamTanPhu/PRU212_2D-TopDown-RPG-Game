@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -52,6 +54,13 @@ public class PlayerHealth : MonoBehaviour
 
         // Play death animation
         animator.SetTrigger("Die");
+        StartCoroutine(BacktoScreen());
+    }
+
+    IEnumerator BacktoScreen()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Main Menu");
     }
 
     private void Update()
