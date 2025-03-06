@@ -23,6 +23,8 @@ public class BowController : MonoBehaviour
     private enum BowState { Idle, Charging, FullyCharged, Shooting }
     private BowState currentState = BowState.Idle;
 
+    AudioManager audioManager;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -33,6 +35,7 @@ public class BowController : MonoBehaviour
         }
 
         SetState(BowState.Idle);
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -106,6 +109,8 @@ public class BowController : MonoBehaviour
 
         canShoot = false;
         SetState(BowState.Shooting);
+
+        audioManager.PlaySFX(audioManager.bowShoting);
 
         // Instantiate the arrow
         GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.identity);

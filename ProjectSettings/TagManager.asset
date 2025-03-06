@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Hole
   - Wall
+  - Audio
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     private Animator animator;
     private PlayerMovement playerMovement;
     private Rigidbody2D rgb;
+    AudioManager audioManager;
 
     private void Awake()
     {
@@ -18,12 +19,14 @@ public class PlayerHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         rgb = GetComponent<Rigidbody2D>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void TakeDamage(float damage)
     {
         if (IsDead) return;
 
+        audioManager.PlaySFX(audioManager.playerHurt);
         CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, StartingHealth);
         FindObjectOfType<HealthBar>()?.UpdateHealthBar();
 
@@ -53,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
         animator.SetFloat("AnimMoveY", playerMovement.lastIdleDirection.y);
 
         // Play death animation
+        audioManager.PlaySFX(audioManager.playerDie);
         animator.SetTrigger("Die");
         StartCoroutine(BacktoScreen());
     }

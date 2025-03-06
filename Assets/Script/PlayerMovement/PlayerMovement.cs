@@ -19,11 +19,13 @@ public class PlayerMovement : MonoBehaviour
     private float nextDashTime = 0f;
     private bool isBeingPushed = false; // Flag for external forces
 
+    AudioManager audioManager;
     void Start()
     {
         Cursor.visible = false;
         rgb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -79,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Dash()
     {
+        audioManager.PlaySFX(audioManager.playerDash);
         isDashing = true;
         animator.SetBool("isDashing", true);
         nextDashTime = Time.time + dashCooldown;

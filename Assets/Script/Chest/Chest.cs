@@ -10,8 +10,10 @@ public class Chest : MonoBehaviour
     private bool isPlayerNear = false;
     private bool isOpened = false;
 
+    AudioManager audioManager;
     private void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -40,6 +42,7 @@ public class Chest : MonoBehaviour
 
     private void OpenChest()
     {
+        audioManager.PlaySFX(audioManager.chestOpen);
         isOpened = true;
         gameObject.GetComponent<SpriteRenderer>().sprite = chestClose;
 
