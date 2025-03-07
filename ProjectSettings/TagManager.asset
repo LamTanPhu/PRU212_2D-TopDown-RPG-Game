@@ -10,6 +10,8 @@ TagManager:
   - Hole
   - Wall
   - Audio
+  - Main Menu
+  - Guide
   layers:
   - Default
   - TransparentFX
