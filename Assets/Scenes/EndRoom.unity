@@ -3556,7 +3556,7 @@ MonoBehaviour:
   musicSource: {fileID: 31824311}
   sfxSource: {fileID: 1818562918}
   spikeSfxSource: {fileID: 1057537555}
-  background: {fileID: 8300000, guid: 66d121c8e16ced04eb5861b065b77878, type: 3}
+  background: {fileID: 8300000, guid: 2a7f2a085a4fba74c8d2e8a205835cb7, type: 3}
   swordSwing: {fileID: 8300000, guid: 9d0bd9334f9d79441b6ad081872b7869, type: 3}
   bowShoting: {fileID: 8300000, guid: 88a05fa4749affd4693d90fcee8141ab, type: 3}
   playerHurt: {fileID: 8300000, guid: 4a163897867018b4eaa20a401e192c5d, type: 3}
@@ -3571,6 +3571,7 @@ MonoBehaviour:
   skeletonAttack: {fileID: 8300000, guid: 9baf4c4a5047f4846947e445db7c9def, type: 3}
   DeathBringerAttack: {fileID: 8300000, guid: fbf843cef574a6e4a985bbd052685581, type: 3}
   GolemAttack: {fileID: 8300000, guid: baa39550752d38244a1a3925f4d4eb22, type: 3}
+  BossDie: {fileID: 0}
 --- !u!4 &571020594
 Transform:
   m_ObjectHideFlags: 0
