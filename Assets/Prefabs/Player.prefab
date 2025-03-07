@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 130544954672593214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.11, y: 91.27, z: 0}
+  m_LocalPosition: {x: 33.64, y: 91.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -226,7 +226,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 8116031220954097220, guid: abd2e0318d5bc61419957d93d2ee5b98, type: 3}
   minArrowSpeed: 15
   maxArrowSpeed: 30
-  chargeTime: 1
+  chargeTime: 0.5
   bowDistance: 0.5
   shootCooldown: 1
 --- !u!95 &5649972566537131334
@@ -283,7 +283,7 @@ Transform:
   m_GameObject: {fileID: 2480907496036305411}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.05, y: -0.59, z: 0}
+  m_LocalPosition: {x: 16.89, y: -1.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -388,6 +388,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordAnimator: {fileID: 2624191027018738863}
   sword: {fileID: 5469735419090294194}
+  audioManager: {fileID: 0}
+  weaponHolder: {fileID: 7487944962055154905}
 --- !u!95 &5343375202202241143
 Animator:
   serializedVersion: 7
@@ -468,8 +470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 743e01bcddd586343b89a481e0180397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7.5
-  dashPower: 12
+  moveSpeed: 7
+  dashPower: 15
   dashDuration: 0.2
   dashCooldown: 0.5
   crosshair: {fileID: 1843829041682722436}
@@ -530,7 +532,6 @@ GameObject:
   - component: {fileID: 5469735419090294194}
   - component: {fileID: 2581823147249589846}
   - component: {fileID: 2624191027018738863}
-  - component: {fileID: 7259668337609286860}
   - component: {fileID: 3584301277892698313}
   - component: {fileID: 922674076540126782}
   - component: {fileID: 4735912247954584654}
@@ -633,20 +634,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7259668337609286860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4288779600420057631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd7e593e6509fa54eaf2b90b95fd8c29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swordAnimator: {fileID: 2624191027018738863}
-  sword: {fileID: 5469735419090294194}
 --- !u!60 &3584301277892698313
 PolygonCollider2D:
   m_ObjectHideFlags: 0

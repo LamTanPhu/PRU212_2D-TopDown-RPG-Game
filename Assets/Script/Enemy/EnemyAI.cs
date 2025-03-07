@@ -31,6 +31,8 @@ public class EnemyAI : MonoBehaviour
     public float chaseSpeed = 3f; // Tốc độ khi đuổi theo Player
     public float chaseRange = 5f; // Khoảng cách để bắt đầu đuổi theo Player
 
+    AudioManager audioManager;
+
     void Start()
     {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"));
@@ -39,6 +41,7 @@ public class EnemyAI : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -164,6 +167,7 @@ public class EnemyAI : MonoBehaviour
         animator.Play("Hurt");
         rb.linearVelocity = Vector2.zero;
 
+        audioManager.PlaySFX(audioManager.enemyHit);
         yield return new WaitForSeconds(0.2f); // Đợi animation Hurt chạy hết
 
         isHurt = false;
@@ -241,6 +245,40 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    //////////////////////////SFX////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void SkeletonDie()
+    {
+        audioManager.PlaySFX(audioManager.skeletonDie);
+    }
 
+    public void DeathBringerDie()
+    {
+        audioManager.PlaySFX(audioManager.DeathBringerDie);
+    }
+
+    public void GolemDie()
+    {
+        audioManager.PlaySFX(audioManager.GolemDie);
+    }
+
+    public void SkeletonAttack()
+    {
+        audioManager.PlaySFX(audioManager.skeletonAttack);
+    }
+
+    public void DeathBringerAttack()
+    {
+        audioManager.PlaySFX(audioManager.DeathBringerAttack);
+    }
+
+    public void GolemAttack()
+    {
+        audioManager.PlaySFX(audioManager.GolemAttack);
+    }
+
+    public void BossDie()
+    {
+        audioManager.PlaySFX(audioManager.BossDie);
+    }
 
 }

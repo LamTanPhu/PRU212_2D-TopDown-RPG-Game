@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SwordSwing : MonoBehaviour
 {
@@ -7,6 +8,13 @@ public class SwordSwing : MonoBehaviour
     public Transform sword; // Assign the Sword GameObject (Make sure it's inactive at start)
     private bool isAttacking = false;
 
+    public AudioManager audioManager;
+    public GameObject weaponHolder;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !isAttacking)
@@ -19,7 +27,10 @@ public class SwordSwing : MonoBehaviour
     {
         isAttacking = true;
         sword.gameObject.SetActive(true); // Show the sword
-
+        if (weaponHolder.activeInHierarchy == true)
+        {
+            audioManager.PlaySFX(audioManager.swordSwing);
+        }
         // Get direction based on cursor position
         Vector2 direction = GetCursorDirection();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
