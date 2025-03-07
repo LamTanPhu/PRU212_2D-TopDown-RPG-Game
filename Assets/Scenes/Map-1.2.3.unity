@@ -9818,6 +9818,7 @@ GameObject:
   - component: {fileID: 2005276696}
   - component: {fileID: 2005276699}
   - component: {fileID: 2005276700}
+  - component: {fileID: 2005276705}
   - component: {fileID: 2005276703}
   - component: {fileID: 2005276704}
   m_Layer: 12
@@ -9947,7 +9948,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005276694}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32f024e98bcb26b4eb3b423ab5ee64ae, type: 3}
   m_Name: 
@@ -10070,6 +10071,23 @@ MonoBehaviour:
   attackDamage: 1
   chaseSpeed: 3
   chaseRange: 5
+--- !u!114 &2005276705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005276694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5642e57693c3847b1edd9a58cb9e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 5101140628576745954, guid: 9a0ad595927830d4cb35a764b9d43fb8, type: 3}
+  bulletSpeed: 5
+  fireRate: 2
+  homingDuration: 1
+  maxTurnSpeed: 270
 --- !u!1 &2009302537
 GameObject:
   m_ObjectHideFlags: 0
